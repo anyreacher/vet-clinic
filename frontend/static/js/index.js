@@ -32,11 +32,11 @@ if (guestMessage && userGreeting && userGreetingText) {
     guestMessage.hidden = true;
     window.auth.fetchApi('/auth/me')
       .then(function(user) {
-        userGreetingText.textContent = 'Hello, ' + user.username + '!';
+        userGreetingText.textContent = 'Здравствуйте, ' + user.username + '!';
         userGreeting.hidden = false;
       })
       .catch(function() {
-        userGreetingText.textContent = 'Hello!';
+        userGreetingText.textContent = 'Здравствуйте!';
         userGreeting.hidden = false;
       });
   } else {

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Запись к врачу — Ветеринарная клиника</title>
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="container container-wide">
+    <header class="header">
+      <h1><a href="index.html">Vet Clinic</a></h1>
+      <nav><a href="index.html">Назад</a></nav>
+    </header>
+    <main>
+      <div class="card">
+        <h2>Запись к врачу</h2>
+        <p>Выберите специалиста и время для записи</p>
+        <div class="schedule-actions">
+          <label for="doctor-select">Специалист</label>
+          <select id="doctor-select">
+            <option value="">— Выберите —</option>
+          </select>
+        </div>
+        <div id="schedule-message" class="error" hidden></div>
+        <div id="schedule-grid" class="schedule-grid" hidden></div>
+      </div>
+    </main>
+  </div>
+  <script src="static/js/auth.js"></script>
+  <script src="static/js/appointments.js"></script>
+</body>
+</html>

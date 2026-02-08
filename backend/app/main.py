@@ -7,8 +7,9 @@ from starlette.staticfiles import StaticFiles
 
 load_dotenv()
 
-from .auth.db import init_db
+from .auth.db import init_db, AsyncSessionLocal
 from .auth.routes import router as auth_router
+from .appointments.routes import router as appointments_router
 
 app = FastAPI(title="Vet clinic")
 
@@ -21,6 +22,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+app.include_router(appointments_router)
 
 # Serve frontend (register, login pages) from same origin so cookies work
 frontend_dir = Path(__file__).resolve().parent.parent.parent / "frontend"
@@ -31,6 +33,9 @@ if frontend_dir.is_dir():
 async def on_startup():
   try:
     await init_db()
+    from app.appointments.crud import ensure_doctors_seed
+    async with AsyncSessionLocal() as db:
+      await ensure_doctors_seed(db)
   except Exception as e:
     print(f"Error initializing database: {e}")
     raise e
