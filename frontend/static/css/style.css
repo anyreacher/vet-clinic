@@ -201,3 +201,15 @@ body {
 .schedule-grid .slot:disabled {
   cursor: not-allowed;
 }
+
+.buttons {
+  display: flex;
+  height: 25%;
+  gap: 25px;
+}
+
+#user-greeting-text {
+  font-size: 1.75rem;
+  color: black;
+  margin-bottom: 25px;
+}
