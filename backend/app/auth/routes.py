@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Response, Cookie
+from fastapi import APIRouter, Depends, HTTPException, status, Request, Response, Cookie
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
 from datetime import timedelta, datetime, timezone
@@ -23,6 +23,7 @@ async def register(user_in: schemas.UserCreate, db: AsyncSession = Depends(get_d
 
 @router.post("/token", response_model=schemas.Token)
 async def login_for_access_token(
+  request: Request,
   response: Response,
   form_data: OAuth2PasswordRequestForm = Depends(),
   db: AsyncSession = Depends(get_db),
@@ -55,7 +56,7 @@ async def login_for_access_token(
     key="refresh_token",
     value=refresh_token,
     httponly=True,
-    secure=security.COOKIE_SECURE,
+    secure=request.url.scheme == "https",
     samesite="lax",
     max_age=int(refresh_expires.total_seconds()),
   )

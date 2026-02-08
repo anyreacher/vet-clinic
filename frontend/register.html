@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Vet Clinic</title>
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1><a href="index.html">Vet Clinic</a></h1>
+      <nav><a href="login.html">Log in</a></nav>
+    </header>
+    <main>
+      <form id="register-form" class="card">
+        <h2>Register</h2>
+        <div id="register-error" class="error" role="alert" hidden></div>
+        <label for="reg-username">Username</label>
+        <input id="reg-username" name="username" type="text" required autocomplete="username">
+        <label for="reg-email">Email (optional)</label>
+        <input id="reg-email" name="email" type="email" autocomplete="email">
+        <label for="reg-password">Password</label>
+        <input id="reg-password" name="password" type="password" required autocomplete="new-password">
+        <button type="submit">Register</button>
+      </form>
+    </main>
+  </div>
+  <script src="static/js/auth.js"></script>
+  <script src="static/js/register.js"></script>
+</body>
+</html>

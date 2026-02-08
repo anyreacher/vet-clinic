@@ -11,7 +11,6 @@ ALGORITHM = os.getenv("ALGORITHM") or "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "15"))
 REFRESH_TOKEN_EXPIRE_MINUTES = int(os.getenv("REFRESH_TOKEN_EXPIRE_MINUTES", str(60 * 24 * 7)))
 
-
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
@@ -49,10 +48,9 @@ def create_refresh_token(*, jti: str, subject: str, expires_delta: Optional[time
     expire = now + expires_delta
   else:
     expire = now + timedelta(minutes=REFRESH_TOKEN_EXPIRE_MINUTES)
-    payload = {
-      "sub": subject, "iat": now, "exp": expire, "jti": jti}
-    token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
-    return token
+  payload = {"sub": subject, "iat": now, "exp": expire, "jti": jti}
+  token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+  return token
 
 
 def decode_token(token: str) -> Optional[dict]:
