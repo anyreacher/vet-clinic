@@ -24,7 +24,6 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(appointments_router)
 
-# Serve frontend (register, login pages) from same origin so cookies work
 frontend_dir = Path(__file__).resolve().parent.parent.parent / "frontend"
 if frontend_dir.is_dir():
     app.mount("/", StaticFiles(directory=str(frontend_dir), html=True))

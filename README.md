@@ -8,7 +8,7 @@
   3. Медицинские карточки (в разработке).
 
 <details>
-  <summary>Запуск локально</summary>
+  <summary><h3><b>Запуск локально</b></h3></summary>
   
   1. Клонируйте репозиторий
     
@@ -56,6 +56,11 @@
 </details>
 
 <details>
-  <summary>Запуск через Docker</summary>
-  Скоро
+  <summary><h3><b>Запуск через Docker</b></h3></summary>
+  
+  Будет скоро
 </details>
+
+# Схема базы данных
+
+![Схема базы данных](./images/db_diagram.svg)

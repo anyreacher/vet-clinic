@@ -6,7 +6,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth import models
 
-# Working hours: 9:00 - 17:00, 30-minute slots
 SLOT_DURATION_MINUTES = 30
 WORK_START = time(9, 0)
 WORK_END = time(17, 0)
